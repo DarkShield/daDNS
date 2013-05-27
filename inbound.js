@@ -12,7 +12,7 @@ function handler (req, res) {
       hostname = question.name; 
 
   if (question.type == 'A') {
-    res.answer.push({name:hostname, type:'A', data:"66.147.244.213", 'ttl':'14400'});
+    res.answer.push({name:hostname, type:'A', data:"66.147.244.213"});
   }
   res.end();
 }
