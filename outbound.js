@@ -1,0 +1,2 @@
+var dnsd = require('dnsd');
+
