@@ -1,0 +1,10 @@
+{
+  "name": "Vice-daDNS", 
+  "description": "DNS Servers needed for ViceT archetecture", 
+  "version": "0.0.1-build", 
+  "private": true, 
+  "author": "Mattjay & ProZachJ", 
+  "dependencies": {
+    "dnsd" : ">=1.2.15"
+  }
+}
