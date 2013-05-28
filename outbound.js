@@ -1,8 +1,8 @@
 var dnsd = require('dnsd');
 
 var server = dnsd.createServer(handler);
-server.zone('mattjay.com', 'ns1.bluehost.com', 'dnsadmin@box713.bluehost.com', 'now', '2h', '30m', '2w', '10m')
-.listen(53, '127.0.0.1');
+server.zone('mattjay.com', 'ns1.vicetek.com', 'matt@mattjay.com', 'now', '2h', '30m', '2w', '10m')
+.listen(53);
 console.log('Server running at 127.0.0.1:53');
 
 function handler (req, res) {
