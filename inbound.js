@@ -22,6 +22,11 @@ function handler (req, res) {
     if (hostname == 'mail.mattjay.com') {
       res.answer.push({name:hostname, type: 'A', data:'66.147.244.213'});
     }
+    
+    if (hostname == 'dashboard.vicetek.com') {
+      res.answer.push({name:hostname, type: 'A', data: '184.73.162.139'});
+    }
+
     res.end();
   }
   else {
