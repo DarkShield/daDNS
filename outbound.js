@@ -1,6 +1,7 @@
 var dnsd = require('dnsd');
-
+var lookups = require('./outbound/lookups');
 var server = dnsd.createServer(handler);
+
 server.zone('mattjay.com', 'ns1.vicetek.com', 'matt@mattjay.com', 'now', '2h', '30m', '2w', '10m')
 .listen(53);
 console.log('Server running at 127.0.0.1:53');
@@ -47,44 +48,23 @@ function handler (req, res) {
     }
 
     if (hostname == 'blog.risk.io' || hostname == 'blog.riskio.com') {
+      console.log('yep');
       res.answer.push({name: hostname, type: 'A', data: '54.148.2.201'});
     }
-
-    if (hostname == 'collector.newrelic.com') {
-      res.answer.push({name: hostname, type: 'A', data: '50.31.164.140'});
+    if (lookups.isNewRelicCollector(hostname)){
+      lookups.newrelic(hostname, function(err, addresses){
+        if(!err){
+          res.answer.push({name:hostname, type: 'A', data: addresses[0]});
+        }else{
+          console.log('DNS Lookup Error: ' + hostname);
+        }
+        res.end()
+      });
+    }else{
+      res.end();
     }
-    if (hostname == 'collector-1.newrelic.com') {
-      res.answer.push({name: hostname, type: 'A', data: '50.31.164.145'});
-    }
-    if (hostname == 'collector-2.newrelic.com') {
-      res.answer.push({name: hostname, type: 'A', data: '50.31.164.146'});
-    }
-    if (hostname == 'collector-3.newrelic.com') {
-      res.answer.push({name: hostname, type: 'A', data: '50.31.164.147'});
-    }
-    if (hostname == 'collector-4.newrelic.com') {
-      res.answer.push({name: hostname, type: 'A', data: '50.31.164.148'});
-    }
-    if (hostname == 'collector-5.newrelic.com') {
-      res.answer.push({name: hostname, type: 'A', data: '50.31.164.149'});
-    }
-    if (hostname == 'collector-6.newrelic.com') {
-      res.answer.push({name: hostname, type: 'A', data: '50.31.164.150'});
-    }
-    if (hostname == 'collector-7.newrelic.com') {
-      res.answer.push({name: hostname, type: 'A', data: '50.31.164.151'});
-    }
-    if (hostname == 'collector-8.newrelic.com') {
-      res.answer.push({name: hostname, type: 'A', data: '50.31.164.152'});
-    }
-    if (hostname == 'collector-9.newrelic.com') {
-      res.answer.push({name: hostname, type: 'A', data: '50.31.164.153'});
-    }
-
-    res.end();
   }
   else {
     console.log('question undefined');
   }
 }
-

@@ -1,10 +1,13 @@
 {
-  "name": "Vice-daDNS", 
-  "description": "DNS Servers needed for ViceT archetecture", 
-  "version": "0.0.1-build", 
-  "private": true, 
-  "author": "Mattjay & ProZachJ", 
+  "name": "Vice-daDNS",
+  "description": "DNS Servers needed for ViceT archetecture",
+  "version": "0.0.1-build",
+  "private": true,
+  "author": "Mattjay & ProZachJ",
   "dependencies": {
-    "dnsd" : "latest"
+    "dnsd": "latest"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
   }
 }
