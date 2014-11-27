@@ -2,9 +2,10 @@ var dnsd = require('dnsd');
 var lookups = require('./outbound/lookups');
 var server = dnsd.createServer(handler);
 
-server.zone('mattjay.com', 'ns1.vicetek.com', 'matt@mattjay.com', 'now', '2h', '30m', '2w', '10m')
-.listen(53);
-console.log('Server running at 127.0.0.1:53');
+var port = (process.env.NODE_ENV === 'production') ? 53 : 5353
+
+server.zone('mattjay.com', 'ns1.vicetek.com', 'matt@mattjay.com', 'now', '2h', '30m', '2w', '10m').listen(port, '127.0.0.1');
+console.log('Server running at 127.0.0.1:'+ port);
 
 function handler (req, res) {
   console.log('%s:%s/%s %j', req.connection.remoteAddress, req.connection.remotePort, req.connection.type, req);
@@ -48,7 +49,6 @@ function handler (req, res) {
     }
 
     if (hostname == 'blog.risk.io' || hostname == 'blog.riskio.com') {
-      console.log('yep');
       res.answer.push({name: hostname, type: 'A', data: '54.148.2.201'});
     }
     if (lookups.isNewRelicCollector(hostname)){
