@@ -5,7 +5,7 @@
   "private": true,
   "author": "Mattjay & ProZachJ",
   "dependencies": {
-    "dnsd": "0.9.5",
+    "dnsd": "it 0.9.5",
     "forever": "0.13.0"
   },
   "devDependencies": {
