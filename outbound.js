@@ -4,7 +4,7 @@ var server = dnsd.createServer(handler);
 
 var port = (process.env.NODE_ENV === 'production') ? 53 : 5353;
 
-server.zone('mattjay.com', 'ns1.vicetek.com', 'matt@mattjay.com', 'now', '2h', '30m', '2w', '10m').listen(port, '127.0.0.1');
+server.zone('mattjay.com', 'ns1.vicetek.com', 'matt@mattjay.com', 'now', '2h', '30m', '2w', '10m').listen(port);
 console.log('Server running at 127.0.0.1:'+ port);
 
 function handler (req, res) {

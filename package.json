@@ -5,9 +5,10 @@
   "private": true,
   "author": "Mattjay & ProZachJ",
   "dependencies": {
-    "dnsd": "latest"
+    "dnsd": "0.9.5",
+    "forever": "0.13.0"
   },
   "devDependencies": {
-    "jasmine-node": "^1.14.5"
+    "jasmine-node": "1.14.5"
   }
 }
